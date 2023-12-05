@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photos</title>
     <link rel="stylesheet" href="gallery.css">
 </head>
@@ -9,33 +9,74 @@
     <div class="full-img" id="fullImgBox">
         <img src="Gallery/Photo1.jpg" id="fullImg">
         <span onclick="closeFullImg()">X</span>
+        <p id="imgCaption"></p>
     </div>
     <div class="img-gallery">
-        <img src="Gallery/Photo1.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Photo11.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Photo3.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Photo4.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Photo5.JPG" onclick="openFullImg(this.src)">
-        <img src="Gallery/Photo6.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Photo10.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Photo8.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Photo9.jpg" onclick="openFullImg(this.src)">
+        <div class="img-container" onclick="openFullImg('Gallery/Photo1.jpg', 'Classroom view')">
+            <img src="Gallery/Photo1.jpg">
+            <p>Classroom view</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Photo11.jpg', 'A Silhouette')">
+            <img src="Gallery/Photo11.jpg">
+            <p>A Silhouette</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Photo3.jpg', 'Trees and sky')">
+            <img src="Gallery/Photo3.jpg">
+            <p>Trees and sky</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Photo4.jpg', 'pink bougainvillea flower')">
+            <img src="Gallery/Photo4.jpg">
+            <p>pink bougainvillea flower</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Photo5.JPG', 'An anonymous Light')">
+            <img src="Gallery/Photo5.JPG">
+            <p>An anonymous Light</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Photo6.jpg', 'Awaken')">
+            <img src="Gallery/Photo6.jpg">
+            <p>Awaken</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Photo10.jpg', 'Pathway')">
+            <img src="Gallery/Photo10.jpg">
+            <p>Pathway</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Photo8.jpg', 'City view')">
+            <img src="Gallery/Photo8.jpg">
+            <p>City view</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Photo9.jpg', 'a walk in the park')">
+            <img src="Gallery/Photo9.jpg">
+            <p>a walk in the park</p>
+        </div>
     </div>
 
-<script>
+    <script>
+        var fullImgBox = document.getElementById("fullImgBox");
+        var fullImg = document.getElementById("fullImg");
+        var imgCaption = document.getElementById("imgCaption");
 
-    var fullImgBox = document.getElementById("fullImgBox");
-    var fulling = document.getElementById("fullImg");
+        function openFullImg(pic, caption){
+            fullImgBox.style.display = "flex";
+            fullImg.src = pic;
 
-    function openFullImg(pic){
-        fullImgBox.style.display = "flex";
-        fullImg.src = pic;
-    }
+            imgCaption.innerHTML = caption;
 
-    function closeFullImg(){
-        fullImgBox.style.display = "none";
-    }
+            imgCaption.style.position = 'fixed';
+            imgCaption.style.top = '65%';
+            imgCaption.style.left = '50%';
+            imgCaption.style.transform = 'translate(-50%, -50%)';
 
-</script>
+            fullImg.style.opacity = "0.4";
+            setTimeout(function() {
+                imgCaption.style.opacity = "1";
+            }, 200);
+        }
+
+        function closeFullImg(){
+            fullImgBox.style.display = "none";
+            fullImg.style.opacity = "1";
+            imgCaption.style.opacity = "0";
+        }
+    </script>
 </body>
 </html>

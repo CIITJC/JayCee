@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artworks</title>
     <link rel="stylesheet" href="Art.css">
 </head>
@@ -9,33 +9,75 @@
     <div class="full-img" id="fullImgBox">
         <img src="Gallery/Art1.JPG" id="fullImg">
         <span onclick="closeFullImg()">X</span>
+        <p id="imgCaption"></p>
     </div>
     <div class="img-gallery">
-        <img src="Gallery/Art1.JPG" onclick="openFullImg(this.src)">
-        <img src="Gallery/Art2.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Art3.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Art4.jpg" onclick="openFullImg(this.src)">
-        <img src="Gallery/Art5.JPG" onclick="openFullImg(this.src)">
-        <img src="Gallery/Art6.PNG" onclick="openFullImg(this.src)">
-        <img src="Gallery/Art7.PNG" onclick="openFullImg(this.src)">
-        <img src="Gallery/Art8.PNG" onclick="openFullImg(this.src)">
-        <img src="Gallery/Art9.PNG" onclick="openFullImg(this.src)">
+        <div class="img-container" onclick="openFullImg('Gallery/Art1.JPG', 'This is my avatar for my art career and this was made digitally using Ibis Paint.')">
+            <img src="Gallery/Art1.JPG">
+            <p>This is my avatar for my art career and this was made digitally using Ibis Paint.</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Art2.jpg', 'This was made digitally using Ibis Paint, its about happiness amidst from pain')">
+            <img src="Gallery/Art2.jpg">
+            <p>This was made digitally using Ibis Paint, its about happiness amidst from pain</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Art3.jpg', 'Traditional Art, A Venom inspired fanart, this was made using a normal A4 paper and drawn by sketching pencils')">
+            <img src="Gallery/Art3.jpg">
+            <p>Traditional Art, A Venom inspired fanart, this was made using a normal A4 paper and drawn by sketching pencils</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Art4.jpg', 'Traditional Art, A Spider-man inspired fan art, this was made using a4 paper and drawn by sketching pencils')">
+            <img src="Gallery/Art4.jpg">
+            <p>Traditional Art, A Spider-man inspired fan art, this was made using a4 paper and drawn by sketching pencils</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Art5.JPG', 'Traditional Art, Kaneki ken fanart, was drawn with a normal hb mechanical pencil, colored with faber castle(Colored Graphite Pencil)')">
+            <img src="Gallery/Art5.JPG">
+            <p>Traditional Art, Kaneki ken fanart, was drawn with a normal hb mechanical pencil, colored with faber castle(Colored Graphite Pencil) </p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Art6.PNG', 'This was drawn Digitally using Ibis Paint')">
+            <img src="Gallery/Art6.PNG">
+            <p>This was drawn Digitally using Ibis Paint</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Art7.PNG', 'This was made with Ibis Paint, It is titled as Clever King')">
+            <img src="Gallery/Art7.PNG">
+            <p>This was made with Ibis Paint, It is titled as "Clever King"</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Art8.PNG', 'This was made with using Ibis paint and it was for nutrition month')">
+            <img src="Gallery/Art8.PNG">
+            <p>This was made with using Ibis paint and it was for nutrition month</p>
+        </div>
+        <div class="img-container" onclick="openFullImg('Gallery/Art9.PNG', 'This was made using Ibis Paint and Title as The Drop')">
+            <img src="Gallery/Art9.PNG">
+            <p>This was made using Ibis Paint and Title as "The Drop"</p>
+        </div>
     </div>
 
-<script>
+    <script>
+        var fullImgBox = document.getElementById("fullImgBox");
+        var fullImg = document.getElementById("fullImg");
+        var imgCaption = document.getElementById("imgCaption");
 
-    var fullImgBox = document.getElementById("fullImgBox");
-    var fulling = document.getElementById("fullImg");
+        function openFullImg(pic, caption){
+            fullImgBox.style.display = "flex";
+            fullImg.src = pic;
 
-    function openFullImg(pic){
-        fullImgBox.style.display = "flex";
-        fullImg.src = pic;
-    }
+            imgCaption.innerHTML = caption;
 
-    function closeFullImg(){
-        fullImgBox.style.display = "none";
-    }
+            imgCaption.style.position = 'fixed';
+            imgCaption.style.top = '65%';
+            imgCaption.style.left = '50%';
+            imgCaption.style.transform = 'translate(-50%, -50%)';
 
-</script>
+            fullImg.style.opacity = "0.4";
+            setTimeout(function() {
+                imgCaption.style.opacity = "1";
+            }, 200);
+        }
+
+        function closeFullImg(){
+            fullImgBox.style.display = "none";
+            fullImg.style.opacity = "1";
+            imgCaption.style.opacity = "0";
+        }
+
+    </script>
 </body>
 </html>
